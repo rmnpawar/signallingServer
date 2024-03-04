@@ -70,7 +70,7 @@ io.on("connection", (socket) => {
     const roomId = socketToRoom[socket.id];
     let room = rooms[roomId];
     if (room) {
-      room = room.filter((user) => user.id !== socket.id);
+      // room = room.filter((user) => user.id !== socket.id);
       rooms[roomId] = {};
     }
     socket.broadcast.to(room).emit("user_exit", { id: socket.id });
