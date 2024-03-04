@@ -34,6 +34,9 @@ io.on("connection", (socket) => {
     socketToRoom[socket.id] = roomId;
 
     if (rooms[roomId]) {
+      rooms[roomId].forEach((room) => {
+        if (room.id === socket.id) return;
+      });
       rooms[roomId].push({ id: socket.id, name: data.name });
     } else {
       rooms[roomId] = [{ id: socket.id, name: data.name }];
